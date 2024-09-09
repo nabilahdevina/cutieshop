@@ -5,6 +5,5 @@ class MoodEntry(models.Model):
     price = models.IntegerField()
     description = models.TextField()
     stock = models.IntegerField()
-    color = models.TextField()
 
     
