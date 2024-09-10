@@ -5,6 +5,7 @@ def show_main(request):
         'name_store': 'cutieshop',
         'name' : 'Nabilah Devina Mumin' ,
         'class': 'PBP B',
+        'stock' : '30',
     }
 
     return render(request, "main.html", context)
