@@ -5,7 +5,6 @@ NPM : 2306245876
 Kelas : PBP B 
 
 1.⁠ ⁠Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step
-
 •⁠  ⁠Pertama-tama, kita buat proyek Django baru dengan nama "cutieshop". Proyek ini adalah kerangka kerja utama yang akan mengatur aplikasi dan pengaturannya. Pastikan proyek ini berada dalam direktori utama bernama "cutieshop" dan terhubung dengan repositori GitHub. Ini berfungsi untuk menyimpan kode di GitHub dan memantau perubahan yang dibuat.
 •⁠  ⁠Selanjutnya, kita buat aplikasi baru di dalam proyek Django ini. Kita beri nama aplikasi ini "main".
 •⁠  ⁠Agar aplikasi "main" dikenali oleh proyek "cutieshop", kita perlu mendaftarkannya. Buka file settings.py di proyek dan tambahkan nama "main" ke dalam daftar INSTALLED_APPS.
@@ -20,7 +19,6 @@ Kelas : PBP B
 
 
 3.⁠ ⁠Jelaskan fungsi git dalam pengembangan perangkat lunak!
-
 •⁠  ⁠Mengelola Versi Kode: 
 Git memudahkan pengembang melacak perubahan pada kode dengan menyimpannya sebagai "commit" setiap kali ada perubahan. Setiap commit dilengkapi pesan penjelas, sehingga pengembang bisa melihat perubahan yang telah dilakukan dan kembali ke versi sebelumnya jika diperlukan.
 •⁠  ⁠Pengelolaan Repositori: 
@@ -35,3 +33,42 @@ Git memungkinkan banyak pengembang bekerja pada proyek yang sama tanpa saling me
 
 5.⁠ ⁠Mengapa model pada Django disebut sebagai ORM?
 Model dalam Django disebut sebagai ORM (Object-Relational Mapping) karena berfungsi sebagai lapisan yang menghubungkan antara objek dalam kode Python dengan tabel dalam basis data relasional. ORM memungkinkan pengembang untuk bekerja dengan data menggunakan konsep objek dalam bahasa pemrograman, tanpa harus menulis SQL secara langsung untuk berinteraksi dengan basis data.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TUGAS 3
+
+1. Mengapa kita memerlukan data delivery dalam pengimplementasian sebuah platform?
+Data delivery memungkinkan akses data yang tersimpan di server atau database pusat oleh pengguna di berbagai lokasi. Platform perlu terhubung dengan layanan eksternal seperti API untuk memastikan bahwa data yang dibutuhkan dapat dikirim dan diterima dalam format yang sesuai, sehingga mendukung interaksi dan kolaborasi yang mulus antara berbagai sistem. Hal ini juga memastikan bahwa proses pengiriman data berjalan dengan efisien, tepat waktu, dan konsisten untuk menjaga kelancaran operasional platform secara keseluruhan.
+
+2. Mana yang lebih baik antara XML dan JSON? Mengapa JSON lebih populer dibandingkan XML? 
+Berikut perbedaan anatara XML dan JSON :
+- Dalam hal integrasi dengan bahasa pemograman, JSON lebih mudah diintegrasikan dengan bahasa pemrograman seperti JavaScript, Python, dan Java. Sedangkan, XML membutuhkan parsing lebih rumit.
+- Dalam hal kemudahan penggunaan, JSON mudah dibaca dan ditulis (mirip dengan struktur objek di banyak bahasa pemrograman). Sedangkan, XML lebih kompleks dan sulit dikelola.
+- Dalam hal keringkasan, JSON lebih ringkas dan efisien dalam penggunaan bandwidth dan penyimpanan. Sedangkan, XML lebih panjang karena menggunakan banyak tag, seperti <element></element>.
+Dari beberapa perbedaan diatas, dapat disimpulkan JSON lebih populer karena ringan, cepat, dan mudah digunakan. XML masih digunakan di beberapa kasus khusus, seperti standar industri dan dokumen kompleks.
+
+3. Jelaskan fungsi dari method is_valid() pada form Django dan mengapa kita membutuhkan method tersebut?
+Method is_valid() pada form Django digunakan untuk memeriksa keabsahan data yang dikirimkan, memastikan bahwa input memenuhi aturan yang ditetapkan, seperti format email atau jenis data yang tepat. Jika ditemukan kesalahan, method ini akan menandai form sebagai tidak valid dan menyimpan pesan kesalahan untuk setiap field yang bermasalah, sehingga bisa ditampilkan kepada pengguna. Proses ini memastikan integritas data dan meningkatkan keamanan aplikasi dari potensi input yang tidak diinginkan.
+
+4. Mengapa kita membutuhkan csrf_token saat membuat form di Django? Apa yang dapat terjadi jika kita tidak menambahkan csrf_token pada form Django? Bagaimana hal tersebut dapat dimanfaatkan oleh penyerang?
+CSRF Token diperlukan saat membuat form di Django untuk melindungi aplikasi dari serangan Cross-Site Request Forgery (CSRF), di mana penyerang dapat memanipulasi pengguna untuk mengirimkan permintaan tidak sah ke server. Tanpa CSRF Token, form menjadi rentan terhadap serangan tersebut, yang memungkinkan penyerang membuat permintaan yang tidak diinginkan atas nama pengguna yang sudah login. Hal ini dapat digunakan untuk mengubah data sensitif atau melakukan tindakan yang merugikan. Dengan menyertakan CSRF Token, aplikasi dapat memastikan bahwa setiap permintaan yang diterima adalah sah dan berasal dari pengguna yang terautentikasi.
+
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)
+- Membuat Direktori Templates dan File HTML
+Mempersiapkan struktur dasar tampilan aplikasi web dengan membuat direktori templates dan file base.html untuk kerangka halaman yang konsisten.
+- Konfigurasi settings.py dan Menyusun main.html
+Mengatur Django untuk mengenali direktori template melalui settings.py, kemudian menggunakan {% extends 'base.html' %} pada main.html untuk menampilkan konten spesifik pada halaman.
+- Menyiapkan Model dan Melakukan Migrasi
+Membuat model data di models.py, melakukan migrasi untuk memperbarui skema database, dan memungkinkan penyimpanan data produk.
+- Membuat Form Input Data dan Menampilkan Item di HTML
+Membuat ProductForm di forms.py untuk menangkap input data produk dari pengguna, mengintegrasikannya ke dalam views.py, serta menampilkan dan memvalidasi form di create_product.html.
+- Mengembalikan Data dalam Format XML
+Menambahkan fungsi di views.py untuk mengubah data produk menjadi format XML dan mengaksesnya melalui browser.
+- Mengembalikan Data dalam Format JSON
+Membuat fungsi serupa untuk mengubah data menjadi format JSON dan mengaksesnya di browser.
+- Mengembalikan Data Berdasarkan ID dalam Bentuk XML dan JSON
+Menambahkan fungsi untuk menampilkan data produk berdasarkan ID dalam format XML dan JSON, serta memperbarui URL untuk aksesnya.
+- Menggunakan Postman untuk Menguji API
+Menggunakan Postman untuk menguji pengambilan data melalui API dengan format XML dan JSON, serta menguji pengambilan data berdasarkan ID.
+- Deployment Otomatis ke PWS Menggunakan GitHub Actions
+Menyiapkan GitHub Actions untuk otomatisasi deployment ke PWS setiap kali melakukan push ke branch utama di GitHub, dengan menambahkan file konfigurasi deploy.yml.
