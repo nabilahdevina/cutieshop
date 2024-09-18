@@ -1,4 +1,4 @@
-Nama : Nabilah Devina Mumin
+<img width="1440" alt="Screenshot 2024-09-18 at 11 08 43" src="https://github.com/user-attachments/assets/5c1fd93b-5c3f-4a29-b23e-d40f8b6434d3">Nama : Nabilah Devina Mumin
 
 NPM : 2306245876
 
@@ -72,3 +72,13 @@ Menambahkan fungsi untuk menampilkan data produk berdasarkan ID dalam format XML
 Menggunakan Postman untuk menguji pengambilan data melalui API dengan format XML dan JSON, serta menguji pengambilan data berdasarkan ID.
 - Deployment Otomatis ke PWS Menggunakan GitHub Actions
 Menyiapkan GitHub Actions untuk otomatisasi deployment ke PWS setiap kali melakukan push ke branch utama di GitHub, dengan menambahkan file konfigurasi deploy.yml.
+
+<img width="1440" alt="Screenshot 2024-09-18 at 11 08 43" src="https://github.com/user-attachments/assets/a63137b9-2d79-43a3-bf0b-e1c89101ed01">
+<img width="1440" alt="Screenshot 2024-09-18 at 11 08 22" src="https://github.com/user-attachments/assets/f1b07d8a-a2b1-4016-a4a3-aa13db2c6d45">
+<img width="1440" alt="Screenshot 2024-09-18 at 11 08 03" src="https://github.com/user-attachments/assets/a4ed5733-a874-42d7-a8af-2530ce907aab">
+<img width="1440" alt="Screenshot 2024-09-18 at 11 07 33" src="https://github.com/user-attachments/assets/963b3647-2a46-4b26-9e22-bf77d3946ed0">
+
+
+
+
+
