@@ -1,19 +1,19 @@
-<img width="1440" alt="Screenshot 2024-09-18 at 11 08 43" src="https://github.com/user-attachments/assets/5c1fd93b-5c3f-4a29-b23e-d40f8b6434d3">Nama : Nabilah Devina Mumin
+Nama : Nabilah Devina Mumin
 
 NPM : 2306245876
 
 Kelas : PBP B 
 
 1.⁠ ⁠Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step
-•⁠  ⁠Pertama-tama, kita buat proyek Django baru dengan nama "cutieshop". Proyek ini adalah kerangka kerja utama yang akan mengatur aplikasi dan pengaturannya. Pastikan proyek ini berada dalam direktori utama bernama "cutieshop" dan terhubung dengan repositori GitHub. Ini berfungsi untuk menyimpan kode di GitHub dan memantau perubahan yang dibuat.
-•⁠  ⁠Selanjutnya, kita buat aplikasi baru di dalam proyek Django ini. Kita beri nama aplikasi ini "main".
-•⁠  ⁠Agar aplikasi "main" dikenali oleh proyek "cutieshop", kita perlu mendaftarkannya. Buka file settings.py di proyek dan tambahkan nama "main" ke dalam daftar INSTALLED_APPS.
-•⁠  ⁠Sekarang kita perlu mendefinisikan struktur data yang akan digunakan aplikasi. Buka file models.py di aplikasi "main" dan buat class bernama Product. Fungsi models.py adalah untuk menyimpan script database.
-•⁠  ⁠Buat folder baru dengan nama "templates" di dalam direktori aplikasi "main". Di dalam folder ini, buat file HTML bernama "main.html". File ini akan digunakan untuk mendefinisikan bagaimana data dari aplikasi ditampilkan kepada pengguna di halaman web.
-•⁠  ⁠Buka file views.py dan tambahkan fungsi yang akan menghubungkan data dari model dengan template HTML yang kita buat. Fungsi ini akan mengambil data produk dan mengirimkannya ke template "main.html" untuk ditampilkan. Ini adalah cara aplikasi menunjukkan informasi kepada pengguna.
+-  ⁠Pertama-tama, kita buat proyek Django baru dengan nama "cutieshop". Proyek ini adalah kerangka kerja utama yang akan mengatur aplikasi dan pengaturannya. Pastikan proyek ini berada dalam direktori utama bernama "cutieshop" dan terhubung dengan repositori GitHub. Ini berfungsi untuk menyimpan kode di GitHub dan memantau perubahan yang dibuat.
+-⁠  ⁠Selanjutnya, kita buat aplikasi baru di dalam proyek Django ini. Kita beri nama aplikasi ini "main".
+-⁠  ⁠Agar aplikasi "main" dikenali oleh proyek "cutieshop", kita perlu mendaftarkannya. Buka file settings.py di proyek dan tambahkan nama "main" ke dalam daftar INSTALLED_APPS.
+-⁠  ⁠Sekarang kita perlu mendefinisikan struktur data yang akan digunakan aplikasi. Buka file models.py di aplikasi "main" dan buat class bernama Product. Fungsi models.py adalah untuk menyimpan script database.
+-  ⁠Buat folder baru dengan nama "templates" di dalam direktori aplikasi "main". Di dalam folder ini, buat file HTML bernama "main.html". File ini akan digunakan untuk mendefinisikan bagaimana data dari aplikasi ditampilkan kepada pengguna di halaman web.
+- ⁠Buka file views.py dan tambahkan fungsi yang akan menghubungkan data dari model dengan template HTML yang kita buat. Fungsi ini akan mengambil data produk dan mengirimkannya ke template "main.html" untuk ditampilkan. Ini adalah cara aplikasi menunjukkan informasi kepada pengguna.
 -  Di dalam aplikasi "main", buat file urls.py untuk mengatur URL yang akan mengarahkan pengguna ke tampilan yang tepat. 
-•⁠  ⁠Buka file urls.py di proyek "cutieshop" dan tambahkan rute yang mengarah ke file urls.py di aplikasi "main".
-•⁠  ⁠Setelah semuanya siap, saatnya untuk Deployment ke PWS.
+-  ⁠Buka file urls.py di proyek "cutieshop" dan tambahkan rute yang mengarah ke file urls.py di aplikasi "main".
+-⁠  ⁠Setelah semuanya siap, saatnya untuk Deployment ke PWS.
 
 2. ![image](https://github.com/user-attachments/assets/e4c0e411-947a-4071-a468-9edcf59722e1)
 
@@ -77,6 +77,44 @@ Menyiapkan GitHub Actions untuk otomatisasi deployment ke PWS setiap kali melaku
 <img width="1440" alt="Screenshot 2024-09-18 at 11 08 22" src="https://github.com/user-attachments/assets/f1b07d8a-a2b1-4016-a4a3-aa13db2c6d45">
 <img width="1440" alt="Screenshot 2024-09-18 at 11 08 03" src="https://github.com/user-attachments/assets/a4ed5733-a874-42d7-a8af-2530ce907aab">
 <img width="1440" alt="Screenshot 2024-09-18 at 11 07 33" src="https://github.com/user-attachments/assets/963b3647-2a46-4b26-9e22-bf77d3946ed0">
+<img width="1440" alt="Screenshot 2024-09-18 at 11 08 43" src="https://github.com/user-attachments/assets/5c1fd93b-5c3f-4a29-b23e-d40f8b6434d3">
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TUGAS 4
+
+1. Apa perbedaan antara HttpResponseRedirect() dan redirect()
+- Dalam hal fleksibelitas, redirect() lebih fleksibel karena bisa menerima URL sebagai string, nama URL, atau objek model. Sedangkan HttpResponseRedirect() hanya menerima string URL.
+- Redirect() sering kali lebih terintegrasi dengan middleware Django, sehingga lebih mudah digunakan dalam konteks yang melibatkan autentikasi dan otorisasi.
+
+2. Jelaskan cara kerja penghubungan model Product dengan User!
+Hubungan antara model Product dan model User di Django umumnya dilakukan melalui relasi ForeignKey, di mana setiap produk dimiliki oleh satu pengguna. Model Product memiliki atribut owner yang menyimpan ID pengguna yang menciptakan produk tersebut. Ini memungkinkan pengaitannya dengan pengguna dan melakukan query untuk menampilkan semua produk yang dimiliki oleh pengguna tersebut. 
+
+3. Apa perbedaan antara authentication dan authorization, apakah yang dilakukan saat pengguna login? Jelaskan bagaimana Django mengimplementasikan kedua konsep tersebut.
+Authentication adalah proses memverifikasi identitas pengguna, biasanya dengan memeriksa username dan password, sedangkan authorization adalah proses yang menentukan apakah pengguna yang sudah terautentikasi memiliki izin untuk mengakses atau melakukan tindakan tertentu.
+
+Ketika pengguna login, sistem pertama-tama memeriksa kredensial mereka (authentication), dan jika berhasil, pengguna diberi akses ke berbagai fitur berdasarkan hak yang dimiliki (authorization). Django mengimplementasikan authentication melalui fungsi authenticate() untuk memverifikasi pengguna, dan login() untuk memulai sesi. Django juga menyediakan decorator @login_required untuk memastikan bahwa hanya pengguna yang sudah terautentikasi yang dapat mengakses halaman atau fungsi tertentu.
+
+4. Bagaimana Django mengingat pengguna yang telah login? Jelaskan kegunaan lain dari cookies dan apakah semua cookies aman digunakan?
+Django mengingat pengguna yang telah login melalui sistem sesi dan cookie. Saat login berhasil, Django membuat sesi di server dan menyimpan ID sesi dalam cookie di browser pengguna. Setiap kali pengguna melakukan permintaan, Django membaca cookie untuk mendapatkan ID sesi dan mencocokkannya dengan data sesi di server, yang berisi informasi pengguna dan status autentikasi. Middleware sesi Django secara otomatis mengelola penyimpanan dan penghapusan data sesi, sehingga pengguna tetap terhubung saat menjelajah aplikasi, selama sesi masih aktif atau hingga mereka logout.
+
+Cookies digunakan untuk mengingat pengguna, menyimpan preferensi, dan melacak aktivitas. Namun, tidak semua cookies aman, mereka dapat menjadi target serangan jika tidak dikelola dengan benar. Penting untuk menggunakan fitur keamanan seperti HttpOnly dan Secure, serta memberi pengguna kontrol atas pengaturan privasi mereka.
+
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+- Fungsi dan Formulir Registrasi: Buat fungsi dan halaman registrasi dengan mengimpor UserCreationForm dan message dari django.contrib.auth. UserCreationForm mempermudah pembuatan formulir pendaftaran. Tambahkan fungsi registrasi untuk menghasilkan formulir dan membuat akun pengguna saat disubmit. Buat file HTML untuk halaman pendaftaran yang mengumpulkan data dengan aman dan memberikan umpan balik pendaftaran melalui sistem pesan. Impor fungsi registrasi di views.py dan tambahkan path URL ke urlpatterns.
+- Fungsi Login: Tambahkan beberapa impor seperti authenticate, login, dan AuthenticationForm untuk mengimplementasikan fungsi login. Buat fungsi login_user di views.py yang mengautentikasi pengguna dan membuat sesi untuk pengguna yang valid. Buat file baru login.html sebagai template untuk login dan opsi pendaftaran bagi pengguna baru.
+Restriksi Akses Halaman Utama: Tambahkan login_required untuk memastikan pengguna harus login sebelum mengakses halaman utama. Gunakan dekorator @login_required(login_url='/login') pada halaman utama dan jalankan proyek Django di http://localhost:8000/.
+- Penggunaan Cookies: Tambahkan cookie untuk menyimpan data login terakhir dan tampilkan di halaman utama. Impor fungsi seperti HttpResponseRedirect, reverse, dan datetime di views.py. Tambahkan cookie last_login pada respons untuk menampilkan informasi terakhir login. Ubah fungsi logout_user untuk menghapus cookie saat logout, dan tampilkan pesan mengenai sesi terakhir login.
+- Melihat Cookie: Untuk melihat cookie, buka protokol localhost di Chrome, klik kanan pada halaman web, pilih "Inspect," lalu navigasi ke tab "Application" untuk melihat cookie yang ada.
+- Menghubungkan Model Entry dengan User: Tambahkan impor di models.py untuk membuat relasi antara model dan pengguna. Buat variabel user guna mengaitkan setiap entri produk dengan pengguna. Di views.py, gunakan parameter commit=False untuk menunda penyimpanan objek ke database, kemudian ubah kode untuk menampilkan entri produk yang terkait dengan pengguna yang sedang login. Setelah itu, simpan perubahan, lakukan migrasi, dan atasi error dengan menetapkan nilai default untuk field user pada semua entri yang ada. Terakhir, impor os dan sesuaikan variabel DEBUG sesuai kebutuhan.
+- Lalu lakukan Deploy ke PWS
+- Pada web Covela, klik register untuk menambahkan akun (untuk ketentuan tugas maka perlu dibuat 2 akun). Selanjutnya tambahkan tiga Product pada web tersebut.
+
+
+
+
+
+
+
 
 
 
