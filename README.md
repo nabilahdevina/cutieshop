@@ -109,6 +109,59 @@ Restriksi Akses Halaman Utama: Tambahkan login_required untuk memastikan penggun
 - Lalu lakukan Deploy ke PWS
 - Pada web Covela, klik register untuk menambahkan akun (untuk ketentuan tugas maka perlu dibuat 2 akun). Selanjutnya tambahkan tiga Product pada web tersebut.
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TUGAS 5
+
+1. Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!
+Dalam CSS, urutan prioritas penentuan selector dimulai dari yang tertinggi, yaitu gaya inline (style langsung pada elemen), diikuti oleh selector ID, lalu class, atribut, dan pseudo-class, kemudian selector tipe elemen dan pseudo-element. Jika terdapat properti dengan !important, properti tersebut akan diutamakan, meskipun spesifisitasnya lebih rendah. Jika dua selector memiliki tingkat spesifisitas yang sama, aturan yang muncul terakhir dalam urutan sumber (cascade) akan diutamakan.
+
+2. Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design!
+Responsive design penting dalam pengembangan aplikasi web karena memastikan situs dapat menyesuaikan tampilan dan fungsinya sesuai dengan berbagai ukuran layar dan perangkat yang digunakan. Dengan semakin banyaknya pengguna yang mengakses situs melalui perangkat mobile seperti smartphone dan tablet, situs web perlu terlihat baik di layar kecil maupun besar. Responsive design memberikan pengalaman yang konsisten dalam hal navigasi dan kenyamanan pengguna, tanpa perlu membuat versi situs yang berbeda untuk setiap perangkat.
+
+- Aplikasi yang sudah menerapkan responsive design : Twitter, Instagram, Spotify, Netflix, LinkedIn, YouTube, Canva
+- Aplikasi yang belum menerapkan responsive design : Craigslist, KAI Access (versi lama), MTV.com
+
+3. Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!
+Margin, border, dan padding adalah tiga properti CSS yang digunakan untuk mengatur tata letak elemen HTML. Margin adalah ruang di luar border yang menentukan jarak antara elemen dengan elemen lain di sekitarnya, border adalah garis yang mengelilingi elemen di antara margin dan padding, sementara padding adalah ruang antara konten elemen dan tepi dalam elemen. Padding mengatur jarak konten dengan batas elemen, border memberikan garis pemisah di sekitar elemen, dan margin memastikan elemen tidak bersinggungan dengan elemen lain di halaman. Ketiganya dapat diatur untuk setiap sisi elemen secara spesifik untuk mencapai desain yang diinginkan.
+
+- Contoh implementasi margin : 
+.container {
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+}
+
+- Contoh implementasi border : 
+.container {
+    border-top: 2px solid red;
+    border-right: 2px dashed green;
+    border-bottom: 2px dotted blue;
+    border-left: 2px solid black;
+}
+
+- Contoh implementasi padding :
+.container {
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+}
+
+4. Jelaskan konsep flex box dan grid layout beserta kegunaannya!
+Flexbox adalah sistem satu dimensi yang ideal untuk menyusun elemen secara horizontal atau vertikal, dengan fleksibilitas dalam mengatur jarak antar elemen dan membuat tata letak yang responsif. Ini sangat cocok untuk tata letak yang lebih sederhana, seperti menu atau elemen yang disusun dalam satu baris atau kolom. Grid Layout adalah sistem dua dimensi yang memungkinkan penyusunan elemen dalam baris dan kolom secara bersamaan, memberikan kontrol yang lebih besar atas posisi dan ukuran elemen, sehingga sangat cocok untuk tata letak yang lebih kompleks seperti dashboard atau galeri. Keduanya membantu membuat tata letak yang dinamis dan responsif, tetapi Flexbox digunakan untuk tata letak satu dimensi, sementara Grid lebih baik untuk tata letak dua dimensi.
+
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
+- Integrasi Tailwind CSS: Pertama, buka project Django Anda dan edit file base.html. Tambahkan tag <meta name="viewport"> untuk memastikan tampilan responsif. Kemudian, hubungkan template Django dengan Tailwind CSS menggunakan skrip CDN dengan menambahkan kode tersebut di dalam file base.html.
+- Menambahkan Fitur Edit Product: Buka file views.py dan buat fungsi baru untuk fitur edit produk. Jangan lupa untuk menambahkan import yang relevan. Selanjutnya, buka file edit_product.html dan sesuaikan isinya. Di urls.py, tambahkan path URL dan import yang diperlukan, serta pastikan URL menuju fitur edit menggunakan {% url 'main:edit_product' product_entry.pk %}.
+- Menambahkan Fitur Hapus Mood: Buat fungsi baru bernama delete_mood di views.py, kemudian tambahkan path URL dan import yang sesuai di urls.py. Setelah itu, buka file main.html dan tambahkan URL untuk menghapus mood dengan benar.
+- Menambahkan Navigation Bar: Buat file navbar.html di dalam folder templates yang sejajar dengan main.html. Kaitkan file main.html, create_product_entry.html, dan edit_product.html dengan menambahkan elemen navigasi yang mengarah ke halaman-halaman tersebut.
+- Konfigurasi Static Files: Pada file settings.py, tambahkan 'whitenoise.middleware.WhiteNoiseMiddleware'untuk menangani file statis. Pastikan variabel seperti STATIC_ROOT, STATICFILES_DIRS, dan STATIC_URL dikonfigurasi dengan benar untuk mengelola file CSS dan gambar.
+- Menambahkan Gambar dan Styling (Opsional): Jika ingin menambahkan gambar, impor gambar tersebut ke dalam folder static, yang biasanya berisi folder css dan images. Hubungkan file global.css dan Tailwind CSS ke base.html, kemudian tambahkan custom styling di global.css. Lakukan styling pada halaman login, register.html, dan buat juga halaman card_product.html di folder templates. Jangan lupa untuk memberikan gaya pada halaman create_product_entry.html dan edit_product.html agar tampilan lebih menarik.
+
+
+
+
 
 
 
