@@ -25,7 +25,7 @@ def show_main(request):
         'class': 'PBP B',
         'stock' : '30',
         'product_entries': product_entries,
-        'last_login': request.COOKIES['last_login']
+        'last_login': request.COOKIES['last_login'],
     }
     
 
