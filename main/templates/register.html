@@ -5,28 +5,61 @@
 {% endblock meta %}
 
 {% block content %}
+<div class="min-h-screen flex items-center justify-center w-screen bg-pink-50 py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md w-full space-y-8">
+    <div class="text-center">
+      <h2 class="mt-6 text-pink-600 text-4xl font-extrabold">
+        <span class="block">♡ 𝙧𝙚𝙜𝙞𝙨𝙩𝙚𝙧 𝙝𝙚𝙧𝙚 ♡</span>
+      </h2>
+      <p class="mt-2 text-pink-400 font-semibold">
+        Become a part of our cutie family!
+      </p>
+    </div>
+    <form class="mt-8 space-y-6" method="POST">
+      {% csrf_token %}
+      <div class="rounded-md shadow-lg -space-y-px">
+        {% for field in form %}
+        <div class="{% if not forloop.first %}pt-2{% endif %}">
+          <label for="{{ field.id_for_label }}" class="sr-only">{{ field.label }}</label>
+          <input id="{{ field.id_for_label }}" name="{{ field.name }}" type="{{ field.field.widget.input_type }}" 
+                 {% if field.value %}value="{{ field.value }}"{% endif %}
+                 class="appearance-none rounded-full relative block w-full px-4 py-3 border border-pink-300 placeholder-pink-400 text-pink-800 focus:outline-none focus:ring-pink-300 focus:border-pink-300 focus:z-10 sm:text-sm transition duration-200 ease-in-out shadow-md" placeholder="{{ field.label }}">
+          {% if field.errors %}
+          <div class="text-red-600 text-sm mt-1">
+            {% for error in field.errors %}
+            <p>{{ error }}</p>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
 
-<div class="login">
-  <h1>Register</h1>
+      <div>
+        <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-full text-white bg-pink-500 hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-300 transition duration-300 ease-in-out shadow-lg">
+          Sign up 
+        </button>
+      </div>
+    </form>
 
-  <form method="POST">
-    {% csrf_token %}
-    <table>
-      {{ form.as_table }}
-      <tr>
-        <td></td>
-        <td><input type="submit" name="submit" value="Daftar" /></td>
-      </tr>
-    </table>
-  </form>
+    {% if messages %}
+    <div class="mt-4">
+      {% for message in messages %}
+      <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+        <span class="block sm:inline">{{ message }}</span>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
 
-  {% if messages %}
-  <ul>
-    {% for message in messages %}
-    <li>{{ message }}</li>
-    {% endfor %}
-  </ul>
-  {% endif %}
+    <div class="text-center mt-4">
+      <p class="text-sm text-pink-800">
+        Already have an account?
+        <a href="{% url 'main:login' %}" class="font-medium text-pink-500 hover:text-pink-600 transition duration-200 ease-in-out">
+          Login here
+        </a>
+      </p>
+    </div>
+  </div>
 </div>
-
 {% endblock content %}

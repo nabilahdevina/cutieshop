@@ -1,60 +1,82 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>CUTIE SHOP</title>
+{% endblock meta %}
 {% block content %}
-<h1>cutieshop</h1>
+{% include 'navbar.html' %}
+<div class="overflow-x-hidden px-4 md:px-8 pb-8 pt-24 min-h-screen bg-pink-50 flex flex-col">
+  <div class="p-2 mb-6 relative">
+    <div class="relative grid grid-cols-1 z-30 md:grid-cols-3 gap-8">
+      {% include "card_info.html" with title='NPM' value=npm %}
+      {% include "card_info.html" with title='Name' value=name %}
+      {% include "card_info.html" with title='Class' value=class %}
+    </div>
+    {% comment %} <div class="w-full px-6 absolute top-[44px] left-0 z-20 hidden md:flex">
+      <div class="w-full min-h-4 bg-[#FFF5E4]"></div>
+    </div>
+    <div class="h-full w-full py-6 absolute top-0 left-0 z-20 md:hidden flex ">
+      <div class="h-full min-w-4 bg-[#FFF5E4] mx-auto"></div>
+    </div>
+  </div> {% endcomment %}
 
-<h5>Name_store: </h5>
-<p>{{ name_store }}</p> <!-- Ubah sesuai dengan nama store kamu-->
-<h5>Name: </h5>
-<p>{{ name }}</p> <!-- Ubah sesuai dengan nama kamu -->
-<h5>Class: </h5>
-<p>{{ class }}</p> <!-- Ubah sesuai dengan kelas kamu -->
-<h5>Stock: </h5>
-<p>{{ stock }}</p> <!-- Ubah sesuai dengan kelas kamu -->
+  <!-- Welcome Message -->
+  <div class="px-3 mb-4">
+    <div class="flex items-center py-2 px-4">
+      <p class="text-[#850E35] text-center text-lg font-serif italic">
+        Welcome to CutieShop, your go-to destination for adorable toys and playful treasures! Since 2016, we've been dedicated to bringing joy to children and collectors alike with our carefully curated selection of toys
+      </p>
+    </div>
+  </div>
 
-...
-{% if not product_entries %}
-<p>Maaf cutieshop belum jualan produk apapun.</p>
-{% else %}
-<table>
-  <tr>
-    <th>name</th>
-    <th>price</th>
-    <th>description</th>
-    <th>stock</th>
-  </tr>
+  {% if not product_entries %}
+  <div class="flex flex-col items-center justify-center min-h-[24rem] p-6">
+    <img src="{% static 'image/sedih-banget.png' %}" alt="Sad face" class="w-32 h-32 mb-4"/>
+    <p class="text-center text-gray-600 mt-4">Belum ada product yang tersedia</p>
+  </div>
+  {% else %}
+  <!-- Responsiveness starts here -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    {% for product_entry in product_entries %}
+    <div class="relative bg-[#FFE3E1] shadow-lg rounded-2xl p-4 border-2 border-[#FFD1D1] transform hover:scale-105 transition-transform duration-300">
+      <!-- Modified section with buttons aligned with product name -->
+      <div class="bg-[#FFD1D1] text-gray-800 p-4 rounded-t-2xl border-b-2 border-[#FFD1D1] flex justify-between items-center">
+        <h3 class="font-bold text-xl text-[#850E35]">{{ product_entry.name }}</h3>
+        <!-- Buttons for editing and deleting -->
+        <div class="flex space-x-2">
+          <a href="{% url 'main:edit_product' product_entry.pk %}" class="bg-yellow-400 hover:bg-yellow-500 text-white rounded-full p-2 transition duration-300 shadow-md">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+            </svg>
+          </a>
+          <a href="{% url 'main:delete_product' product_entry.pk %}" class="bg-red-400 hover:bg-red-500 text-white rounded-full p-2 transition duration-300 shadow-md">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 012 0v6a1 1 011-2V8zm5-1a1 1 00-1 1v6a1 1 010 0V8a1 1 010-2z" clip-rule="evenodd" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="p-4">
+        <p class="font-semibold text-lg mb-2 text-[#88304E]">Description</p>
+        <p class="text-gray-700 mb-2">{{ product_entry.description }}</p>
+        <p class="text-[#88304E] font-semibold mb-2">Stock: 
+          <span class="text-[#88304E]">
+            {{ product_entry.stock }}
+          </span>
+        </p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
 
-  {% comment %} Berikut cara memperlihatkan data mood di bawah baris ini 
-  {% endcomment %} 
-  {% for product_entry in product_entries %}
-  <tr>
-    <td>{{product_entry.name}}</td>
-    <td>{{product_entry.price}}</td>
-    <td>{{product_entry.description}}</td>
-    <td>{{product_entry.stock}}</td>
-  </tr>
-  {% endfor %}
-</table>
-{% endif %}
+  <!-- Last Login Box, now below product cards -->
+  <div class="px-3 mb-4">
+    <div class="inline-block py-2 px-4 bg-[#FFE3E1] border-2 border-[#FFD1D1] rounded-lg shadow-md mt-4">
+      <h1 class="text-[#850E35] text-lg font-serif italic">Last Login: {{last_login}}</h1>
+    </div>
+  </div>
 
-<br />
-
-<a href="{% url 'main:create_product' %}">
-  <button>Add New Product Entry</button>
-</a>
-
-<a href="{% url 'main:logout' %}">
-  <button>Logout</button>
-</a>
-
-<h5>Sesi terakhir login: {{ last_login }}</h5>
-
+</div>
 {% endblock content %}
-
-
-
-
-
-
-
-
-
