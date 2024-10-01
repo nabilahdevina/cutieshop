@@ -13,7 +13,7 @@ import datetime
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-@login_required(login_url='login')
+@login_required(login_url='main:login')
 
 def show_main(request):
     product_entries = Product.objects.filter(user=request.user)
