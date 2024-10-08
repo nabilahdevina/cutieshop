@@ -159,6 +159,82 @@ Flexbox adalah sistem satu dimensi yang ideal untuk menyusun elemen secara horiz
 - Konfigurasi Static Files: Pada file settings.py, tambahkan 'whitenoise.middleware.WhiteNoiseMiddleware'untuk menangani file statis. Pastikan variabel seperti STATIC_ROOT, STATICFILES_DIRS, dan STATIC_URL dikonfigurasi dengan benar untuk mengelola file CSS dan gambar.
 - Menambahkan Gambar dan Styling (Opsional): Jika ingin menambahkan gambar, impor gambar tersebut ke dalam folder static, yang biasanya berisi folder css dan images. Hubungkan file global.css dan Tailwind CSS ke base.html, kemudian tambahkan custom styling di global.css. Lakukan styling pada halaman login, register.html, dan buat juga halaman card_product.html di folder templates. Jangan lupa untuk memberikan gaya pada halaman create_product_entry.html dan edit_product.html agar tampilan lebih menarik.
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TUGAS 6
+
+1. Jelaskan manfaat dari penggunaan JavaScript dalam pengembangan aplikasi web!
+- Interaktivitas Tinggi
+JavaScript memungkinkan pembuatan tampilan dinamis pada sebuah website. Contohnya, membuat efek animasi, dropdown menus, slideshow, dan fitur-fitur lain yang memudahkan pengguna dalam berinteraksi dengan halaman web.
+- Validasi Formulir dan Input
+JavaScript dapat digunakan untuk memvalidasi formulir di website. Ini memastikan bahwa pengguna telah memasukkan data yang benar dan lengkap sebelum mengirimkan formulir, meningkatkan keakuratan data yang diterima.
+- Animasi dan Efek Visual
+JavaScript sangat efektif dalam membuat animasi dan efek visual menarik pada halaman web. Contohnya adalah slideshow, menu drop-down, animasi tombol, dan efek hover, yang meningkatkan daya tarik visual situs.
+- Manipulasi HTML dan CSS
+JavaScript memungkinkan pengembang untuk mengakses dan memanipulasi struktur halaman web melalui DOM (Document Object Model). Ini memungkinkan pengembang untuk menambahkan, menghapus, atau mengubah elemen-elemen HTML dan CSS secara dinamis, memberikan fleksibilitas tinggi dalam pengembangan.
+- Respons Instan Terhadap Aksi Pengguna**
+Dengan JavaScript, pengembang dapat memberikan respons instan kepada pengguna setelah mereka melakukan aksi tertentu, seperti mengklik tombol atau mengisi formulir. Hal ini secara signifikan meningkatkan pengalaman pengguna di situs web.
+- Integrasi dengan Framework dan Library
+JavaScript memiliki banyak framework dan library yang membantu mempercepat dan mempermudah proses pengembangan aplikasi web. Framework seperti React, Angular, dan Vue.js memungkinkan pengembangan aplikasi web secara cepat dan efisien.
+- Kecepatan Loading Website
+Kecepatan loading website adalah faktor penting dalam peringkat SEO. Penggunaan JavaScript yang optimal dapat membantu meningkatkan performa loading website, yang berpengaruh pada peringkat website di mesin pencari seperti Google.
+- Fleksibilitas Penerapan
+Walaupun awalnya digunakan di frontend, implementasi JavaScript telah berkembang ke backend dengan adanya Node.js. Hal ini memungkinkan pengembang untuk mengelola server dan database menggunakan JavaScript, memberikan fleksibilitas penuh dalam pengembangan aplikasi web.
+
+2. Jelaskan fungsi dari penggunaan await ketika kita menggunakan fetch()! Apa yang akan terjadi jika kita tidak menggunakan await?
+Penggunaan `await` ketika menggunakan `fetch()` memiliki beberapa tujuan utama yang sangat berguna dalam pengembangan aplikasi web asinkron. 
+Fungsi dari `await` adalah untuk menunggu sampai promse (Promise) selesai sebelum melanjutkan eksekusi kode. Ketika Anda menggunakan `await` dengan `fetch()`, kita membiarkan JavaScript menunggu hingga permintaan HTTP selesai dan respons datanya tersedia sebelum melanjutkan ke langkah berikutnya. 
+
+Contoh penggunaan `await` dengan `fetch()` adalah sebagai berikut: 
+
+```async function getProductEntries(){
+      	 return fetch("{% url 'main:show_json' %}").then((res) => res.json())
+```
+
+Dalam contoh ini, `await` digunakan untuk menunggu sampai `fetch(url)` selesai dan respons textnya tersedia sebelum mengembalikan hasilnya.
+Await membuat kode yang asinkron berperilaku seperti kode yang sinkron, sehingga akan lebih mudah untuk dibaca dan dipahami. Dengan await, kita dapat menghindari penggunaan callback yang ebrtumpuk, sehingga kode akan lebih bersih dan terstruktur.
+
+Jika kita tidak menggunakan `await`, kita harus menggunakan `.then()` untuk menangani hasil promse. Cara ini sering disebut sebagai "callback hell," karena dapat membuat kode menjadi rumit dan sulit dibaca. 
+
+3. Mengapa kita perlu menggunakan decorator csrf_exempt pada view yang akan digunakan untuk AJAX POST?
+Penggunaan decorator `csrf_exempt` pada view yang akan digunakan untuk AJAX POST sangat penting dalam konteks keamanan aplikasi web yang dibangun dengan Django. Berikut adalah alasan-alasan mengapa kita perlu menggunakan decorator ini dan apa yang terjadi jika kita tidak menggunakannya.
+
+Alasan Menggunakan `csrf_exempt` :
+- Menghindari Pengecekan CSRF**
+Dekorator `csrf_exempt` menandai view tertentu agar tidak diperiksa oleh middleware CSRF. Ini berguna ketika kita melakukan permintaan POST melalui AJAX, di mana pengiriman token CSRF mungkin tidak selalu dilakukan atau sulit untuk diatur dalam konteks JavaScript.
+- Kemudahan dalam Pengembangan**
+Dalam banyak kasus, terutama saat mengembangkan aplikasi dengan banyak interaksi AJAX, menggunakan `csrf_exempt` dapat menyederhanakan proses pengembangan. Pengembang tidak perlu khawatir tentang pengaturan token CSRF untuk setiap permintaan POST yang dilakukan melalui AJAX.
+- Fleksibilitas**
+Dengan menandai view tertentu sebagai exempt dari pemeriksaan CSRF, kita memberikan fleksibilitas dalam menangani permintaan yang mungkin tidak memerlukan perlindungan CSRF, seperti permintaan dari API yang diakses oleh klien tepercaya.
+
+Apa Yang Terjadi Jika Tidak Menggunakan `csrf_exempt`:
+- Error 403 Forbidden
+Jika kita tidak menggunakan `csrf_exempt` dan juga tidak mengirimkan token CSRF dengan benar dalam permintaan AJAX, server akan menolak permintaan tersebut dan mengembalikan error 403 Forbidden. Ini terjadi karena Django secara otomatis memeriksa keberadaan token CSRF untuk semua permintaan POST.
+- Kerumitan Penanganan Token
+Tanpa `csrf_exempt`, kita harus memastikan bahwa setiap permintaan AJAX menyertakan token CSRF yang valid. Ini bisa menjadi rumit, terutama jika ada banyak permintaan AJAX yang dilakukan dari sisi klien dan setiap permintaan harus menangani token dengan cara yang benar.
+- Potensi Kerentanan Keamanan
+Jika kita mengabaikan perlindungan CSRF pada view yang seharusnya dilindungi, tanpa menggunakan `csrf_exempt`, maka kita berisiko membuka celah keamanan di aplikasi kita. Namun, jika kita menggunakan `csrf_exempt` pada view yang seharusnya tetap aman, maka ini juga dapat menyebabkan kerentanan terhadap serangan CSRF.
+
+Penggunaan dekorator `csrf_exempt` pada view untuk AJAX POST merupakan langkah strategis untuk memastikan bahwa aplikasi dapat berfungsi dengan baik tanpa mengorbankan keamanan, selama penggunaannya dilakukan dengan hati-hati dan hanya pada view yang memang tidak memerlukan perlindungan CSRF.
+
+
+4. Pada tutorial PBP minggu ini, pembersihan data input pengguna dilakukan di belakang (backend) juga. Mengapa hal tersebut tidak dilakukan di frontend saja?
+Keamanan Data :
+- Melawan Serangan Cross-Site Scripting (XSS) : Jika pembersihan data dilakukan di frontend, maka data yang tidak bersih dapat dieksploitasi oleh serangan XSS. Oleh karena itu, melakukan pembersihan di backend membantu melindungi data dari serangan ini.
+- Menyaring Masukan Malicious : Di backend, kita dapat lebih efektif dalam menyaring masukan malicious yang mungkin dicoba oleh pengguna untuk merugikan aplikasi.
+
+Stabilitas Sistem**
+- Menghindari Ketergantungan Browser : Jika pembersihan dilakukan di browser, maka kinerja aplikasi dapat dipengaruhi oleh varietas browser yang berbeda-beda. Di backend, kita dapat memastikan bahwa pembersihan dilakukan secara konsisten tanpa ketergantungan pada teknologi front-end.
+- Otomatisasi Prosess : Backend memungkinkan kita untuk membuat proses pembersihan data menjadi otomatis, sehingga tidak perlu repot-repot melakukan manual check-up setiap kali user input.
+
+Skalabilitas dan Integrasi
+- Scalability : Saat aplikasi berkembang, backend lebih mudah skalabel dibandingkan dengan frontend. Artinya, kita dapat menambahkan lebih banyak resources untuk memproses data tanpa mempengaruhi performance aplikasi secara signifikan.
+- Integration with Other Services : Backend seringkali berintegrasi dengan services lain seperti databases, APIs, dll., sehingga melakukan pembersihan di sana memungkinkan integrasi yang lebih baik dan koheren.
+
+Transparency dan Audit Trail**
+- Audit Trail : Dengan melakukan pembersihan di backend, kita dapat menciptakan trail audit yang lebih transparan tentang apa yang telah dilakukan pada data pengguna. Ini sangat penting untuk tujuan legal dan compliance.
+- Logging Activity : Logging activity related to data cleaning can provide valuable insights into how the system handles different types of inputs which helps in improving overall security posture.
+
+
 
 
 
